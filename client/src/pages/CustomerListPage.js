@@ -188,58 +188,60 @@ const CustomerListPage = () => {
                     ) : (
                         <>
                             <div className="card">
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Created</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {customers.map((customer) => (
-                                            <tr key={customer.id}>
-                                                <td>
-                                                    <Link 
-                                                        to={`/customers/${customer.id}`}
-                                                        style={{ color: '#007bff', textDecoration: 'none' }}
-                                                    >
-                                                        {customer.name}
-                                                    </Link>
-                                                </td>
-                                                <td>{customer.email}</td>
-                                                <td>{customer.phone || 'N/A'}</td>
-                                                <td>
-                                                    {new Date(customer.created_at).toLocaleDateString()}
-                                                </td>
-                                                <td>
-                                                    <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                                        <Link
-                                                            to={`/customers/${customer.id}`}
-                                                            className="btn btn-secondary btn-sm"
-                                                        >
-                                                            View
-                                                        </Link>
-                                                        <Link
-                                                            to={`/customers/${customer.id}/edit`}
-                                                            className="btn btn-primary btn-sm"
-                                                        >
-                                                            Edit
-                                                        </Link>
-                                                        <button
-                                                            onClick={() => handleDeleteCustomer(customer.id)}
-                                                            className="btn btn-danger btn-sm"
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </div>
-                                                </td>
+                                <div className="table-container">
+                                    <table className="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Created</th>
+                                                <th>Actions</th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {customers.map((customer) => (
+                                                <tr key={customer.id}>
+                                                    <td>
+                                                        <Link 
+                                                            to={`/customers/${customer.id}`}
+                                                            style={{ color: '#007bff', textDecoration: 'none' }}
+                                                        >
+                                                            {customer.name}
+                                                        </Link>
+                                                    </td>
+                                                    <td>{customer.email}</td>
+                                                    <td>{customer.phone || 'N/A'}</td>
+                                                    <td>
+                                                        {new Date(customer.created_at).toLocaleDateString()}
+                                                    </td>
+                                                    <td>
+                                                        <div className="btn-group">
+                                                            <Link
+                                                                to={`/customers/${customer.id}`}
+                                                                className="btn btn-secondary btn-sm"
+                                                            >
+                                                                View
+                                                            </Link>
+                                                            <Link
+                                                                to={`/customers/${customer.id}/edit`}
+                                                                className="btn btn-primary btn-sm"
+                                                            >
+                                                                Edit
+                                                            </Link>
+                                                            <button
+                                                                onClick={() => handleDeleteCustomer(customer.id)}
+                                                                className="btn btn-danger btn-sm"
+                                                            >
+                                                                Delete
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
                             {/* Pagination */}

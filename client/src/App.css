@@ -109,6 +109,12 @@
   font-size: 0.8rem;
 }
 
+.btn-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
 /* Form styles */
 .form-group {
   margin-bottom: 1rem;
@@ -236,27 +242,427 @@
   margin-bottom: 1rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ========================================
+   RESPONSIVE DESIGN - MOBILE FIRST APPROACH
+   ======================================== */
+
+/* Base styles are mobile-first (320px+) */
+
+/* Small Mobile Devices (320px - 479px) */
+@media (max-width: 479px) {
+  .main-content {
+    padding: 0 0.5rem;
+    margin: 1rem auto;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .nav-container {
+    padding: 0 0.5rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .nav-brand {
+    font-size: 1.25rem;
+  }
+
+  .nav-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .search-filters {
+    padding: 1rem;
+  }
+
+  .search-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .search-row .form-group {
+    margin-bottom: 0;
+  }
+
+  .form-control {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+  }
+
+  /* Table responsiveness for very small screens */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: -1rem;
+    padding: 1rem;
+  }
+
+  .table {
+    min-width: 600px;
+    font-size: 0.8rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem 0.25rem;
+    white-space: nowrap;
+  }
+
+  .table th:first-child,
+  .table td:first-child {
+    padding-left: 0.5rem;
+    position: sticky;
+    left: 0;
+    background: inherit;
+    z-index: 1;
+  }
+
+  /* Stack action buttons vertically on very small screens */
+  .table .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 80px;
+  }
+
+  .table .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    width: 100%;
+  }
+
+  /* Form improvements */
+  .form-grid-small {
+    display: block !important;
+    gap: 0;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+
+  /* Pagination adjustments */
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .pagination button {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    min-width: 40px;
+  }
+
+  /* Hide less important pagination buttons on very small screens */
+  .pagination .pagination-ellipsis {
+    display: none;
+  }
+}
+
+/* Mobile Devices (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .main-content {
+    padding: 0 1rem;
+  }
+
   .nav-container {
     flex-direction: column;
     gap: 1rem;
+    text-align: center;
   }
-  
+
   .search-row {
     flex-direction: column;
+    gap: 1rem;
   }
-  
+
   .search-row .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
-  
+
+  .btn:not(.btn-sm) {
+    padding: 0.75rem 1.25rem;
+    width: auto;
+  }
+
   .table {
     font-size: 0.9rem;
   }
-  
+
   .table th,
   .table td {
-    padding: 0.5rem;
+    padding: 0.75rem 0.5rem;
+  }
+
+  /* Two-column form layout for larger mobile */
+  .form-grid-mobile {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+
+/* Tablet Devices (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav-container {
+    flex-direction: row;
+  }
+
+  .nav-brand {
+    font-size: 1.4rem;
+  }
+
+  .search-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1rem;
+    align-items: end;
+  }
+
+  .search-row .form-group:last-child {
+    display: flex;
+    align-items: end;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.75rem;
+  }
+
+  /* Better table layout for tablets */
+  .table .btn-group {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+
+  /* Form improvements for tablets */
+  .form-grid-tablet {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .form-group-full {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Small Desktop (1024px - 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .main-content {
+    max-width: 1000px;
+  }
+
+  .search-row {
+    display: flex;
+    align-items: end;
+  }
+
+  .search-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .search-row .form-group:last-child {
+    flex: 0 0 auto;
+    margin-left: 1rem;
+  }
+
+  /* Three-column form layout */
+  .form-grid-desktop {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+  .main-content {
+    max-width: 1200px;
+  }
+
+  .page-title {
+    font-size: 2.25rem;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 1rem;
+  }
+
+  /* Enhanced spacing for large screens */
+  .search-filters {
+    padding: 2rem;
+  }
+
+  .form-grid-large {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* High DPI/Retina Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .btn {
+    border: 1px solid transparent;
+  }
+
+  .form-control {
+    border-width: 1px;
+  }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .navbar {
+    padding: 0.5rem 0;
+  }
+
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-size: 1.2rem;
+  }
+
+  .nav-links {
+    gap: 0.5rem;
+  }
+
+  .main-content {
+    margin: 1rem auto;
+  }
+}
+
+/* Print styles */
+@media print {
+  .navbar,
+  .btn,
+  .pagination,
+  .search-filters {
+    display: none !important;
+  }
+
+  .main-content {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .table {
+    font-size: 0.8rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support (if user prefers dark) */
+@media (prefers-color-scheme: dark) {
+  .App {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+
+  .navbar {
+    background-color: #2d2d2d;
+    border-bottom: 1px solid #444;
+  }
+
+  .card {
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+  }
+
+  .form-control {
+    background-color: #404040;
+    border-color: #666;
+    color: #ffffff;
+  }
+
+  .form-control:focus {
+    border-color: #0084ff;
+    background-color: #4a4a4a;
+  }
+
+  .table {
+    background-color: #2d2d2d;
+  }
+
+  .table th {
+    background-color: #404040;
+    color: #ffffff;
+  }
+
+  .table td {
+    border-bottom-color: #444;
+    color: #ffffff;
+  }
+
+  .table tbody tr:hover {
+    background-color: #404040;
   }
 }

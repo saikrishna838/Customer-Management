@@ -183,7 +183,7 @@ const CustomerFormPage = () => {
                 )}
 
                 <form onSubmit={handleSubmit}>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
+                    <div className="form-grid-small form-grid-mobile form-grid-tablet form-grid-desktop form-grid-large">
                         {/* Name Field */}
                         <div className="form-group">
                             <label className="form-label">
@@ -247,7 +247,7 @@ const CustomerFormPage = () => {
                     </div>
 
                     {/* Form Actions */}
-                    <div style={{ 
+                    <div className="form-actions" style={{ 
                         marginTop: '2rem', 
                         paddingTop: '1rem', 
                         borderTop: '1px solid #eee',
